@@ -1,0 +1,346 @@
+create table gost(
+sifra int not null primary key auto_increment,
+ime varchar (45) not null,
+prezime varchar (45) not null,
+kontakt varchar (45),
+mjesto varchar (45))
+engine=innodb;
+
+create table narudzba(
+sifra int not null primary key auto_increment,
+datum datetime not null,
+gost int not null)
+engine=innodb;
+
+create table jelo(
+sifra int not null primary key auto_increment,
+naziv varchar (45) not null,
+cijena decimal not null,
+opis varchar (250))
+engine=innodb;
+
+create table stavka_narudzbe(
+narudzba int not null,
+jelo int not null,
+kolicina varchar (10))
+engine=innodb;
+
+alter table stavka_narudzbe add foreign key (jelo) references jelo(sifra);
+alter table stavka_narudzbe add foreign key (narudzba) references narudzba(sifra);
+alter table narudzba add foreign key (gost) references gost(sifra);
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Katarina', 'Blažević','kbla@gmail.com','Vinkovci');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Ivana', 'Jakić', 'ijak@gmail.com','Žepče');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Zvonimir', 'Starčević','zstar@gmail.com','Garešnica');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Ema', 'Čelebić','ecel@gmail.com','Vinkovci');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Magdalena', 'Kuleš','magd@gmail.com','Kutina');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Jelena', 'Brkljač','bjel@gmail.com','Osijek');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Dalibor', 'Vukas','dalv@gmail.com','Vukovar');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Tomislav', 'Vargašević','tvarg@gmail.com','Slavonski Brod');
+
+insert into gost(ime,prezime)
+values ('Josipa', 'Iljić');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Marko', 'Glibušić','mark@gmail.com','Vinkovci');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Ana', 'Žeravica','anaz@gmail.com','Vinkovci');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Anja', 'Martinović','anjam@gmail.com','Našice');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Nikolina', 'Begović','nbeg@gmail.com','Osijek');
+
+insert into gost(ime,prezime,mjesto)
+values ('Marinela', 'Rajković','Vinkovci');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Vedrana', 'Filić','vedr@gmail.com','Županja');
+
+insert into gost(ime,prezime,kontakt,mjesto)
+values ('Marija', 'Vencel','maven@gmail.com','Osijek');
+
+
+
+insert into jelo(naziv,cijena,opis)
+values('Bečki odrezak',40.00,'Prženi odrezak paniran u ulju.');
+
+insert into jelo(naziv,cijena,opis)
+values('Čokoladna torta',15.00,'Desertno jelo.');
+
+insert into jelo(naziv,cijena,opis)
+values('Piletina',40.00,'Pileći odresci pečeni na žaru.');
+
+insert into jelo(naziv,cijena,opis)
+values('Krem juha od povrća',20.00,'Krem juha od sezonskog povrća.');
+
+insert into jelo(naziv,cijena,opis)
+values('Zelena salata',10.00,'Salata.');
+
+insert into jelo(naziv,cijena,opis)
+values('Zagrebački odrezak',60.00,'Svinjski odrezak punjen sa sirom.');
+
+insert into jelo(naziv,cijena,opis)
+values('Sladoled',8.00,'Desertno jelo.');
+
+insert into jelo(naziv,cijena,opis)
+values('Lignje',60.00,'Jadranske lignje na žaru.');
+
+insert into jelo(naziv,cijena,opis)
+values('Salata od krastavaca',10.00,'Salata.');
+
+insert into jelo(naziv,cijena,opis)
+values('Prženi krumpir',10.00,'Krumpir sječen na štapiće i pržen u biljnom ulju.');
+
+insert into jelo(naziv,cijena,opis)
+values('Teleći odrezak',60.00,'Odrezak s pršutom.');
+
+insert into jelo(naziv,cijena)
+values('Krem juha od brokule',15.00);
+
+insert into jelo(naziv,cijena)
+values('Kroketi',10.00);
+
+insert into jelo(naziv,cijena)
+values('Špageti carbonara',30.00);
+
+insert into jelo(naziv,cijena,opis)
+values('Pureći file',50.00,'Punjen vrganjima i mozzarellom.');
+
+insert into jelo(naziv,cijena,opis)
+values('Kupus salata',10.00,'Salata.');
+
+insert into jelo(naziv,cijena)
+values('Riža',10.00);
+
+insert into jelo(naziv,cijena,opis)
+values('Njoki',30.00,'Njoki s četiri vrste sira.');
+
+insert into jelo(naziv,cijena,opis)
+values('Sezonska salata',10.00,'Salata.');
+
+insert into jelo(naziv,cijena,opis)
+values('Punjena tjestenina',30.00,'Tjestenina s mozzarellom i pršutom.');
+
+insert into jelo(naziv,cijena)
+values('Goveđa juha',15.00);
+
+insert into jelo(naziv,cijena,opis)
+values('Tiramisu',10.00,'Desertno jelo.');
+
+
+
+insert into narudzba(datum,gost)
+values ('2014-05-01',3);
+
+insert into narudzba(datum,gost)
+values ('2014-05-03',1);
+
+insert into narudzba(datum,gost)
+values ('2014-05-06',3);
+
+insert into narudzba(datum,gost)
+values ('2014-05-10',2);
+
+insert into narudzba(datum,gost)
+values ('2014-05-13',4);
+
+insert into narudzba(datum,gost)
+values ('2014-05-15',3);
+
+insert into narudzba(datum,gost)
+values ('2014-05-16',7);
+
+insert into narudzba(datum,gost)
+values ('2014-05-18',5);
+
+insert into narudzba(datum,gost)
+values ('2014-05-21',7);
+
+insert into narudzba(datum,gost)
+values ('2014-05-26',5);
+
+insert into narudzba(datum,gost)
+values ('2014-05-27',13);
+
+insert into narudzba(datum,gost)
+values ('2014-05-30',15);
+
+insert into narudzba(datum,gost)
+values ('2014-05-06',10);
+
+insert into narudzba(datum,gost)
+values ('2014-05-10',6);
+
+insert into narudzba(datum,gost)
+values ('2014-05-13',9);
+
+insert into narudzba(datum,gost)
+values ('2014-05-16',8);
+
+insert into narudzba(datum,gost)
+values ('2014-05-26',1);
+
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,14,2);
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (7,11,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (1,9,1);
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,8,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (5,2,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (3,1,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (8,13,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,15,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (10,9,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (5,15,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (11,8,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (12,20,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (3,6,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,9,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (7,8,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (10,17,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (2,9,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (6,17,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (9,19,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,17,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,7,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (7,7,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (7,10,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (1,6,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,5,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (5,9,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (5,12,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (3,2,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (3,4,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (3,13,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (8,2,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,7,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (10,13,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (10,17,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (5,16,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (11,10,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (11,22,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (12,22,1);
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (12,8,1);
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (3,7,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (3,9,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,13,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (4,6,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (7,14,2);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (10,18,1);
+
+insert into stavka_narudzbe(narudzba,jelo,kolicina)
+values (10,3,1);
+
+create table operater(
+sifra int not null primary key auto_increment,
+ime varchar(30) not null,
+prezime varchar (40) not null,
+email varchar (50) not null,
+lozinka varchar (10) not null,
+mjesto varchar (30))
+engine=innodb;
+
+insert into operater(ime,prezime,email,lozinka,mjesto)
+values ('Ema' ,'Čelebić', 'ecelebic@ffos.hr', 'e1671797c52e15f763380b45e841ec32', 'Osijek');
